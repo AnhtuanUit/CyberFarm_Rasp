@@ -72,8 +72,11 @@ bool sendMessage(char message[]){
 }  
 
 int main( int argc, char ** argv){
-	message = atoi(argv[1]);
+	dest = atoi(argv[1]);
+	crt = atoi(argv[2]);
 
+	printf(dest);
+	printf(crt);
 	setup();
 	bool switched = false;
 	int counter = 0;
@@ -96,12 +99,4 @@ int main( int argc, char ** argv){
 		return 2;
 		}
 	
-}
-
-void checkSum(){
-	char buff[5] = "this is a test string";
-	char subbuff[5];
-	memcpy( subbuff, &buff[10], 4 );
-	subbuff[4] = '\0';
-	printf(subbuff);
 }
