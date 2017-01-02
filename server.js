@@ -48,15 +48,10 @@ var item;
 function sendNode(obj) {
 	console.log("send");
 	each(obj, function(el, next) {
-		while(true){
-			if (status == 1){
-				status =0;
-				nexts = next;
-				item = el;
-				setTimeout(sendMessage, 1000);
-				break;
-			}
-		}
+		nexts = next;
+		item = el;
+		setTimeout(sendMessage, 1000);
+
 	}, function (err) {
 		console.log('finished');
 	});
@@ -64,11 +59,21 @@ function sendNode(obj) {
 }
 
 
+console.log("Run client!!!");
 
 
+//define the routes from the external file
 function sendMessage(){
-	console.log(item);
-	nexts();
-	status = 1
+	exec.execFile('./remote', [item.dest, item.crt]
+		,function (error, stdout) {
+			console.log('stdout: ' + stdout);
+			if( stdout.indexOf("Got this response") > -1 ){
+				var state = stdout.split('Got this response ')[1].split('.')[0];
+				console.log(item);
+				nexts();
+				console.log("-------------////--------------");
+			} else {
+				socket.emit('updateNode', 1);		
+			} 
+		});
 }
-
