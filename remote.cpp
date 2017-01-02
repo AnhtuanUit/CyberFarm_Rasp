@@ -4,7 +4,6 @@
 #include <sstream>
 #include <iostream>
 #include <RF24/RF24.h>
-#include <String.h>
 
 using namespace std;
 //RF24 radio("/dev/spidev0.0",8000000 , 25);  
@@ -12,14 +11,13 @@ using namespace std;
 
 RF24 radio(RPI_V2_GPIO_P1_22, RPI_V2_GPIO_P1_24, BCM2835_SPI_SPEED_8MHZ);
 //const int role_pin = 7;
-const uint64_t pipes[2] = { 0xF0F0F0F0E1LL, 0xF0F0F0F0D2LL };
+const uint64_t pipes[2] = { 100, 80 };
 //const uint8_t pipes[][6] = {"1Node","2Node"};
 
 // hack to avoid SEG FAULT, issue #46 on RF24 github https://github.com/TMRh20/RF24.git
-char message[35];
-int got_message;
-char charMessage[35] = "800100-06040005-0166026603660666"; 
-char charMessage1[35] = "800100-06040005-0066046605660666"; 
+char message[3][11];
+char got_message[3][11];
+ 
 void setup(void){
 	//Prepare the radio module
 	printf("\nPreparing interface\n");
@@ -35,10 +33,9 @@ void setup(void){
 
 }
 
-bool sendMessage(char message[]){
-
+bool sendMessage(){
 	radio.stopListening();
-	printf("Now sending  %d...", message);
+	printf("Now sending  %p...", message[0]);
 
 	//Send the message
 	bool ok = radio.write( &message, sizeof(message) );
@@ -66,17 +63,15 @@ bool sendMessage(char message[]){
 	}else{
 		//If we received the message in time, let's read it and print it
 		radio.read( &got_message, sizeof(got_message) );
-		printf("Yay! Got this response %d.\n\r",got_message);
+		printf("Yay! Got this response %p.\n\r",got_message);
 		return true;
 	}
 }  
 
 int main( int argc, char ** argv){
-	dest = atoi(argv[1]);
-	crt = atoi(argv[2]);
-
-	printf(dest);
-	printf(crt);
+	strcpy(message[0], "0000000000");
+	strcpy(message[1], argv[1]);
+	strcpy(message[2], argv[2]);
 	setup();
 	bool switched = false;
 	int counter = 0;
@@ -87,7 +82,7 @@ int main( int argc, char ** argv){
 
 		while(switched == false && counter < 5){
 
-			switched = sendMessage(charMessage);
+			switched = sendMessage();
 			
 			counter ++;
 
