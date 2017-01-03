@@ -15,10 +15,7 @@ var message ;
 
 var controlArray;
 
-socket.emit('chat', {
-	activityType: 3,
-	estimatedTime: 20
-});
+
 var i, howManyTimes, time;
 var status = 1;
 socket.on('chat', function (data) {
