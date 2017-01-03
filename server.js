@@ -64,6 +64,8 @@ console.log("Run client!!!");
 
 //define the routes from the external file
 function sendMessage(){
+	console.log(item.dest);
+	console.log(item.crt);
 	exec.execFile('./remote', [item.dest, item.crt]
 		,function (error, stdout) {
 			console.log('stdout: ' + stdout);
