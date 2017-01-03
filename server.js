@@ -1,6 +1,5 @@
 
 exec = require('child_process');
-const grep = exec('grep', ['ssh']);
 async = require('async');
 var each = require('async-each-series');
 //socket client.js
