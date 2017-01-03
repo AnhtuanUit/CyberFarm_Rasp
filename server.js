@@ -28,6 +28,11 @@ socket.on('chat', function (data) {
 	f();
 });
 
+socket.on('radioListen', function (data) {
+	console.log(data);
+	radioListen();
+});
+
 /*[ [ { dest: '00000800122', crt: '0000000212' },
 { dest: '00000801221', crt: '0000000001' } ],
 [ { dest: '00000801221', crt: '0000000002' } ] ]*/
@@ -77,3 +82,15 @@ function sendMessage(){
 		});
 }
 
+function radioListen(){
+	exec.execFile('./wait', ['abc']
+		,function (error, stdout) {
+			console.log('stdout: ' + stdout);
+			if( stdout.indexOf("Got this response") > -1 ){
+				var state = stdout.split('Got this response ')[1].split('.')[0];
+				console.log("-------------////--------------");
+			} else {
+				socket.emit('updateNode', 1);		
+			} 
+		});
+}
