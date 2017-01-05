@@ -26,7 +26,7 @@ void setup(void){
 	//	radio.setChannel(0x4c);
 	//	radio.setPALevel(RF24_PA_MAX);
 
-	radio.printDetails();
+	//radio.printDetails();
 	radio.openWritingPipe(pipes[0]);
 	radio.openReadingPipe(1,pipes[1]);
 	//	radio.startListening();
