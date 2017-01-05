@@ -97,7 +97,7 @@ function radioListen(){
 				var info = {
 					isUser: false,
 					MAC: state.substring(2 ,6),
-					type: state.substring(0 ,2)
+					type: 2
 				};
 				socket.emit('acceptJoin', info);	
 				console.log("-------------////--------------");
