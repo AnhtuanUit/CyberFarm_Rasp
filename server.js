@@ -13,7 +13,6 @@ var ackTuoi = -2, ackDoAm = -2;
 
 var message ;
 
-var i, howManyTimes, time;
 var status = 1;
 socket.on('chat', function (data) {
 	console.log(data);
