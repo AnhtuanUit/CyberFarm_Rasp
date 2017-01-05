@@ -37,7 +37,7 @@ int main( int argc, char ** argv){
 	while (switched){
 		if(radio.available()){
 			radio.read( &got_message, sizeof(got_message) );
-			printf("Yay! Got this response %p.\n\r",got_message);
+			printf("Yay! Got this response %s.\n\r",got_message[1]);
 			switched = false;
 		}
 	}

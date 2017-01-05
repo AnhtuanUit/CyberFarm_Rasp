@@ -73,11 +73,17 @@ function sendMessage(control){
 			if( stdout.indexOf("Got this response") > -1 ){
 				var state = stdout.split('Got this response ')[1].split('.')[0];
 				console.log(control);
+				socket.emit('updateNode', {
+					isError: false,
+					control: control
+				});	
 				next_2();
-				console.log("-------------////--------------");
 			} else {
-				next_2();
-				socket.emit('updateNode', 1);		
+				socket.emit('updateNode', {
+					isError: true,
+					control: control
+				});	
+				next_2();	
 			} 
 		});
 }
@@ -90,7 +96,7 @@ function radioListen(){
 				var state = stdout.split('Got this response ')[1].split('.')[0];
 				console.log("-------------////--------------");
 			} else {
-				socket.emit('updateNode', 1);		
+				socket.emit('updateNode', state);		
 			} 
 		});
 }
