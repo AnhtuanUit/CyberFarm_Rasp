@@ -13,19 +13,16 @@ var ackTuoi = -2, ackDoAm = -2;
 
 var message ;
 
-var controlArray;
-
-
 var i, howManyTimes, time;
 var status = 1;
 socket.on('chat', function (data) {
 	console.log(data);
-	time = data.estimatedTime;
-	controlArray = data.cycles;
-	howManyTimes = controlArray.length;
-	i = 0;
 	console.log("-------------Start-------------");
-	f();
+
+	var time = data.estimatedTime;
+	var cycels = data.cycles;
+
+	sendCycle(cycels, time);
 });
 
 socket.on('radioListen', function (data) {
@@ -37,44 +34,46 @@ socket.on('radioListen', function (data) {
 { dest: '00000801221', crt: '0000000001' } ],
 [ { dest: '00000801221', crt: '0000000002' } ] ]*/
 
-function f() {
-	var obj = controlArray[i];
-	sendNode(obj);
-	i++;
-	if( i < howManyTimes){
-		setTimeout( f, time * 1000 );
-	}
-}
-var nexts;
-var item;
-function sendNode(obj) {
-	console.log("send");
-	each(obj, function(el, next) {
-		nexts = next;
-		item = el;
-		sendMessage();
+var next_1, next_2;
+var cycle;
 
+console.log("Run client!!!");
+
+
+function sendCycle(cycels) {
+	console.log("send cycle");
+	each(cycels, function(item, next) {
+		next_1 = next;
+		cycle = item;
+		setTimeout(sendNode, time * 1000 );
 	}, function (err) {
-		console.log('finished');
+		console.log('Finish cycle');
+	});
+}
+
+function sendNode() {
+	console.log("send crt");
+	each(cycle, function(item, next) {
+		next_2 = next;
+		sendMessage(item);
+	}, function (err) {
+		next_1();
+		console.log('finished control');
 	});
 
 }
 
 
-console.log("Run client!!!");
-
-
-//define the routes from the external file
-function sendMessage(){
-	console.log(item.dest);
-	console.log(item.crt);
-	exec.execFile('./remote', [item.dest, item.crt]
+function sendMessage(control){
+	console.log(control.dest);
+	console.log(control.crt);
+	exec.execFile('./remote', [control.dest, control.crt]
 		,function (error, stdout) {
 			console.log('stdout: ' + stdout);
 			if( stdout.indexOf("Got this response") > -1 ){
 				var state = stdout.split('Got this response ')[1].split('.')[0];
-				console.log(item);
-				nexts();
+				console.log(control);
+				next_2();
 				console.log("-------------////--------------");
 			} else {
 				socket.emit('updateNode', 1);		
