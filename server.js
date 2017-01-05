@@ -67,15 +67,19 @@ function sendNode() {
 function sendMessage(control){
 	console.log(control.dest);
 	console.log(control.crt);
+	socket.emit('updateNode', {
+					isError: false,
+					control: control
+				});	
 	exec.execFile('./remote', [control.dest, control.crt]
 		,function (error, stdout) {
 			console.log('stdout: ' + stdout);
 			if( stdout.indexOf("Got this response") > -1 ){
 				var state = stdout.split('Got this response ')[1].split('.')[0];
-				console.log(control);
+				console.log(state);
 				socket.emit('updateNode', {
 					isError: false,
-					control: control
+					control: state
 				});	
 				next_2();
 			} else {

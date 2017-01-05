@@ -11,7 +11,7 @@ using namespace std;
 
 RF24 radio(RPI_V2_GPIO_P1_22, RPI_V2_GPIO_P1_24, BCM2835_SPI_SPEED_8MHZ);
 //const int role_pin = 7;
-const uint64_t pipes[2] = { 100, 80 };
+const int pipes[2] = { 100, 80 };
 //const uint8_t pipes[][6] = {"1Node","2Node"};
 
 char got_message[3][11];
