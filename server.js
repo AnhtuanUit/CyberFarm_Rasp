@@ -94,9 +94,21 @@ function radioListen(){
 			console.log('stdout: ' + stdout);
 			if( stdout.indexOf("Got this response") > -1 ){
 				var state = stdout.split('Got this response ')[1].split('.')[0];
+				var info = {
+					isUser: false,
+					MAC: state.substring(2 ,6),
+					type: state.substring(0 ,2)
+				};
+				socket.emit('acceptJoin', info);	
 				console.log("-------------////--------------");
 			} else {
-				socket.emit('acceptJoin', state);		
+				//socket.emit('acceptJoin', state);		
 			} 
 		});
 }
+/* {
+                isUser: true,
+                acceptJoin: true,
+                MAC: 120,
+                type: 2 
+            } */
