@@ -33,6 +33,7 @@ void setup(void){
 
 
 int main( int argc, char ** argv){
+	setup();
 	bool switched = true;
 	while (switched){
 		if(radio.available()){
