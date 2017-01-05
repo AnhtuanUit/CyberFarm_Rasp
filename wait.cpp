@@ -27,7 +27,7 @@ void setup(void){
 	radio.printDetails();
 	radio.openWritingPipe(pipes[0]);
 	radio.openReadingPipe(1,pipes[1]);
-	//	radio.startListening();
+		radio.startListening();
 
 }
 
