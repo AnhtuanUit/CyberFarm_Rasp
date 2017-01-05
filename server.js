@@ -96,7 +96,7 @@ function radioListen(){
 				var state = stdout.split('Got this response ')[1].split('.')[0];
 				console.log("-------------////--------------");
 			} else {
-				socket.emit('updateNode', state);		
+				socket.emit('acceptJoin', state);		
 			} 
 		});
 }
