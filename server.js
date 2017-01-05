@@ -39,7 +39,7 @@ var cycle;
 console.log("Run client!!!");
 
 
-function sendCycle(cycels) {
+function sendCycle(cycels, time) {
 	console.log("send cycle");
 	each(cycels, function(item, next) {
 		next_1 = next;
