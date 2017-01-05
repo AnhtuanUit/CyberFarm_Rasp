@@ -45,6 +45,7 @@ function sendCycle(cycels) {
 	each(cycels, function(item, next) {
 		next_1 = next;
 		cycle = item;
+		console.log(time);
 		setTimeout(sendNode, time * 1000 );
 	}, function (err) {
 		console.log('Finish cycle');
