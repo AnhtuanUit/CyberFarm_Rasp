@@ -86,7 +86,7 @@ int main( int argc, char ** argv){
 			
 			counter ++;
 
-			delay(3000);
+			delay(1000);
 		}
 		if (counter < 5) {
 		return 0;
