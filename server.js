@@ -52,7 +52,7 @@ function sendNode(obj) {
 	each(obj, function(el, next) {
 		nexts = next;
 		item = el;
-		setTimeout(sendMessage, 1000);
+		sendMessage();
 
 	}, function (err) {
 		console.log('finished');
