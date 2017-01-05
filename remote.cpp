@@ -35,7 +35,7 @@ void setup(void){
 
 bool sendMessage(){
 	radio.stopListening();
-	printf("Now sending  %p...", message[0]);
+	printf("Now sending  %s...", message[0]);
 
 	//Send the message
 	bool ok = radio.write( &message, sizeof(message) );
@@ -63,7 +63,7 @@ bool sendMessage(){
 	}else{
 		//If we received the message in time, let's read it and print it
 		radio.read( &got_message, sizeof(got_message) );
-		printf("Yay! Got this response %p.\n\r",got_message);
+		printf("Yay! Got this response %s.\n\r",got_message[1]);
 		return true;
 	}
 }  
