@@ -76,6 +76,7 @@ function sendMessage(control){
 				next_2();
 				console.log("-------------////--------------");
 			} else {
+				next_2();
 				socket.emit('updateNode', 1);		
 			} 
 		});
