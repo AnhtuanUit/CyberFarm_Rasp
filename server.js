@@ -35,13 +35,19 @@ socket.on('radioListen', function (data) {
 
 var next_1, next_2;
 var cycle;
-
+var firstTime = true;
 console.log("Run client!!!");
 
 
-function sendCycle(cycels, time) {
+function sendCycle(cycels, _time;) {
 	console.log("send cycle");
+	var time;
 	each(cycels, function(item, next) {
+		if(firstTime){
+			time = 0;
+		} else {
+			time = _time;
+		}
 		next_1 = next;
 		cycle = item;
 		console.log(time);
@@ -52,6 +58,7 @@ function sendCycle(cycels, time) {
 }
 
 function sendNode() {
+	firstTime = false;
 	console.log("send crt");
 	each(cycle, function(item, next) {
 		next_2 = next;
@@ -68,9 +75,9 @@ function sendMessage(control){
 	console.log(control.dest);
 	console.log(control.crt);
 	socket.emit('updateNode', {
-					isError: false,
-					control: control
-				});	
+		isError: false,
+		control: control
+	});	
 	exec.execFile('./remote', [control.dest, control.crt]
 		,function (error, stdout) {
 			console.log('stdout: ' + stdout);
