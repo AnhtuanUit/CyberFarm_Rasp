@@ -12,7 +12,7 @@ var socket = io.connect('http://192.168.1.16:3000?token=' + token, {reconnect: t
 var ackTuoi = -2, ackDoAm = -2;
 
 var message ;
-
+var firstTime;
 var status = 1;
 socket.on('chat', function (data) {
 	console.log(data);
@@ -20,7 +20,7 @@ socket.on('chat', function (data) {
 
 	var time = data.estimatedTime;
 	var cycels = data.cycles;
-
+	firstTime = true;
 	sendCycle(cycels, time);
 });
 
@@ -35,7 +35,7 @@ socket.on('radioListen', function (data) {
 
 var next_1, next_2;
 var cycle;
-var firstTime = true;
+
 console.log("Run client!!!");
 
 
