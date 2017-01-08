@@ -18,10 +18,9 @@ socket.on('chat', function (data) {
 	console.log(data);
 	console.log("-------------Start-------------");
 
-	var time = data.estimatedTime;
 	var cycels = data.cycles;
 	firstTime = true;
-	sendCycle(cycels, time);
+	sendCycle(cycels);
 });
 
 socket.on('radioListen', function (data) {
@@ -39,14 +38,15 @@ var cycle;
 console.log("Run client!!!");
 
 
-function sendCycle(cycels, _time) {
+function sendCycle(cycels) {
 	console.log("send cycle");
 	var time;
 	each(cycels, function(item, next) {
+
 		if(firstTime){
 			time = 0;
 		} else {
-			time = _time;
+			time = item[0].crt.substring(4, 8);
 		}
 		next_1 = next;
 		cycle = item;
