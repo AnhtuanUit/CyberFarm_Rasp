@@ -110,6 +110,7 @@ function radioListen(){
 					MAC: state.substring(2 ,6),
 					type: 2
 				};
+				console.log(state);
 				socket.emit('acceptJoin', false, state.substring(2 ,6), 2);	
 				console.log("-------------////--------------");
 			} else {
