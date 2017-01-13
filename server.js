@@ -7,7 +7,7 @@ var io = require('socket.io-client');
 //var token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NzllOWJhMzcxNzgxMWUwMjA3NTI1OGIiLCJ1c2VybmFtZSI6InR1YW4iLCJhdmF0YXIiOiJmZW1hbGUucG5nIiwiaWF0IjoxNDcwMDEzMDU0fQ.wb5Vv6pJc9HVF_YKkZLYHi0zT3EebAMIQz0apobDQq0';
 
 var token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ODY0YmM4YTJlYzM3YzFjNThhM2Y1YmEiLCJhdmF0YXIiOiJodHRwOi8vd3d3LnRoZWdhbWVlbmdpbmVlci5jb20vYmxvZy93cC1jb250ZW50L3VwbG9hZHMvMjAxMi8wMy9lbmdpbmVlci5wbmciLCJpYXQiOjE0ODI5OTc3NTR9.Atj__D6ffc0Cu5gfK5wxAuuyCkBs99gEr5wsgmdQML4';
-var socket = io.connect('http://192.168.1.22:3000?token=' + token, {reconnect: true});
+var socket = io.connect('http://192.168.1.13:3000?token=' + token, {reconnect: true});
 
 var ackTuoi = -2, ackDoAm = -2;
 
