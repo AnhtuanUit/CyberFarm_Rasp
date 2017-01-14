@@ -89,8 +89,10 @@ function sendMessage(control){
 				console.log(crt);
 				socket.emit('updateNode', {
 					isError: false,
-					dest: dest,
-					crt: crt
+					control: {
+						dest: dest,
+						crt: crt
+					}
 				});	
 				next_2();
 			} else {
