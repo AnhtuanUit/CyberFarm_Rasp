@@ -63,7 +63,7 @@ bool sendMessage(){
 	}else{
 		//If we received the message in time, let's read it and print it
 		radio.read( &got_message, sizeof(got_message) );
-		printf("Yay! Got this response %s.\n\r",got_message[1]);
+		printf("Yay! Got this response %s.%s.%s.\n\r",got_message[0], got_message[1], got_message[2]);
 		return true;
 	}
 }  
