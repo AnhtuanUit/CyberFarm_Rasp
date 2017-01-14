@@ -82,11 +82,15 @@ function sendMessage(control){
 		,function (error, stdout) {
 			console.log('stdout: ' + stdout);
 			if( stdout.indexOf("Got this response") > -1 ){
-				var state = stdout.split('Got this response ')[1].split('.')[0];
-				console.log(state);
+				var dest = stdout.split('Got this response ')[1].split('.')[1];
+				var crt = stdout.split('Got this response ')[1].split('.')[2];
+
+				console.log(dest);
+				console.log(crt);
 				socket.emit('updateNode', {
 					isError: false,
-					control: state
+					dest: dest,
+					crt: crt
 				});	
 				next_2();
 			} else {
