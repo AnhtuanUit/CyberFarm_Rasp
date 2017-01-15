@@ -73,7 +73,7 @@ function sendNode() {
 			socket.emit('updateNode', {
 				isError: false,
 				control: {
-					dest: '0101200080',
+					dest: '0001200080',
 					crt: '0000000012'
 				}
 			});	
