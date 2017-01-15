@@ -34,7 +34,7 @@ socket.on('radioListen', function (data) {
 
 var next_1, next_2;
 var cycle;
-
+var cycleLength = 0, dem = 0;
 console.log("Run client!!!");
 
 
@@ -60,14 +60,25 @@ function sendCycle(cycels) {
 function sendNode() {
 	firstTime = false;
 	console.log("send crt");
+	cycleLength = cycle.length;
+
 	each(cycle, function(item, next) {
 		next_2 = next;
 		sendMessage(item);
 	}, function (err) {
+		dem++;
+		if(dem == cycleLength){
+			socket.emit('updateNode', {
+				isError: false,
+				control: {
+					dest: '0101200080',
+					crt: '0000000012'
+				}
+			});	
+		}
 		next_1();
 		console.log('finished control');
 	});
-
 }
 
 
