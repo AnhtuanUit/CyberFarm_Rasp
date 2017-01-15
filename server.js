@@ -14,11 +14,14 @@ var ackTuoi = -2, ackDoAm = -2;
 var message ;
 var firstTime;
 var status = 1;
+var cycleLength = 0, dem = 0;
+
 socket.on('chat', function (data) {
 	console.log(data);
 	console.log("-------------Start-------------");
 
 	var cycels = data.cycles;
+	dem = 0;
 	firstTime = true;
 	sendCycle(cycels);
 });
@@ -34,7 +37,6 @@ socket.on('radioListen', function (data) {
 
 var next_1, next_2;
 var cycle;
-var cycleLength = 0, dem = 0;
 console.log("Run client!!!");
 
 var time;
