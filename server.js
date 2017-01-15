@@ -70,13 +70,16 @@ function sendNode() {
 		console.log(dem);
 		console.log(cycleLength);
 		if(dem == cycleLength){
-			socket.emit('updateNode', {
-				isError: false,
-				control: {
-					dest: '0001200080',
-					crt: '0000000012'
-				}
-			});	
+			
+			setTimeout(function () {
+				socket.emit('updateNode', {
+					isError: false,
+					control: {
+						dest: '0001200080',
+						crt:  '0000000012'
+					}
+				});	
+			}, time * 1000 );
 		}
 		next_1();
 		console.log('finished control');
