@@ -43,7 +43,7 @@ var time;
 function sendCycle(cycels) {
 	console.log("send cycle");
 	cycleLength = cycels.length;
-	
+	 	
 	each(cycels, function(item, next) {
 
 		if(firstTime){
@@ -125,7 +125,7 @@ function sendMessage(control){
 
 function radioListen(){
 	setTimeout(function () {
-		socket.emit('acceptJoin', false, '0101300080', 2); 
+		socket.emit('acceptJoin', false, '0130', 2); 
 	}, 3 * 1000 );
 	
 /*	exec.execFile('./wait', ['abc']
