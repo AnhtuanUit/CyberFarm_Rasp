@@ -40,6 +40,7 @@ console.log("Run client!!!");
 
 function sendCycle(cycels) {
 	console.log("send cycle");
+	cycleLength = cycle.length;
 	var time;
 	each(cycels, function(item, next) {
 
@@ -60,7 +61,6 @@ function sendCycle(cycels) {
 function sendNode() {
 	firstTime = false;
 	console.log("send crt");
-	cycleLength = cycle.length;
 
 	each(cycle, function(item, next) {
 		next_2 = next;
