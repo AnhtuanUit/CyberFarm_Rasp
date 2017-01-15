@@ -67,6 +67,8 @@ function sendNode() {
 		sendMessage(item);
 	}, function (err) {
 		dem++;
+		console.log(dem);
+		console.log(cycleLength);
 		if(dem == cycleLength){
 			socket.emit('updateNode', {
 				isError: false,
