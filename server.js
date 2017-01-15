@@ -124,7 +124,11 @@ function sendMessage(control){
 }
 
 function radioListen(){
-	exec.execFile('./wait', ['abc']
+	setTimeout(function () {
+		socket.emit('acceptJoin', false, '0101300080', 2); 
+	}, 3 * 1000 );
+	
+/*	exec.execFile('./wait', ['abc']
 		,function (error, stdout) {
 			console.log('stdout: ' + stdout);
 			if( stdout.indexOf("Got this response") > -1 ){
@@ -140,8 +144,8 @@ function radioListen(){
 			} else {
 				//socket.emit('acceptJoin', state);		
 			} 
-		});
-}
+		});*/
+	}
 /* {
                 isUser: true,
                 acceptJoin: true,
