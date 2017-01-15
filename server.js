@@ -37,11 +37,11 @@ var cycle;
 var cycleLength = 0, dem = 0;
 console.log("Run client!!!");
 
-
+var time;
 function sendCycle(cycels) {
 	console.log("send cycle");
 	cycleLength = cycels.length;
-	var time;
+	
 	each(cycels, function(item, next) {
 
 		if(firstTime){
