@@ -4,7 +4,7 @@ async = require('async');
 var each = require('async-each-series');
 //socket client.js
 var io = require('socket.io-client');
-var token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NzllOWJhMzcxNzgxMWUwMjA3NTI1OGIiLCJ1c2VybmFtZSI6InR1YW4iLCJhdmF0YXIiOiJmZW1hbGUucG5nIiwiaWF0IjoxNDcwMDEzMDU0fQ.wb5Vv6pJc9HVF_YKkZLYHi0zT3EebAMIQz0apobDQq0';
+var token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ODY0YmM4YTJlYzM3YzFjNThhM2Y1YmEiLCJhdmF0YXIiOiJodHRwOi8vd3d3LnRoZWdhbWVlbmdpbmVlci5jb20vYmxvZy93cC1jb250ZW50L3VwbG9hZHMvMjAxMi8wMy9lbmdpbmVlci5wbmciLCJpYXQiOjE0ODQ1MzMyMDB9.nDQDeDuxUNokFidOG2da5OIWM8ksnu1vzgaIxloY91E';
 
 //var token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ODc4YTgwMjVlNzE0YjIwZDA4ZWI3ZjkiLCJpYXQiOjE0ODQzNzEzNjR9.9Z-9FxAfXfI8dI7CAy1dTsdRbhwB13r5TRnBZuMfChY';
 var socket = io.connect('http://localhost:3000?token=' + token, {reconnect: true});
