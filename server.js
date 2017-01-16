@@ -7,8 +7,8 @@ var io = require('socket.io-client');
 var token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ODY0YmM4YTJlYzM3YzFjNThhM2Y1YmEiLCJhdmF0YXIiOiJodHRwOi8vd3d3LnRoZWdhbWVlbmdpbmVlci5jb20vYmxvZy93cC1jb250ZW50L3VwbG9hZHMvMjAxMi8wMy9lbmdpbmVlci5wbmciLCJpYXQiOjE0ODQ1MzMyMDB9.nDQDeDuxUNokFidOG2da5OIWM8ksnu1vzgaIxloY91E';
 
 //var token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ODc4YTgwMjVlNzE0YjIwZDA4ZWI3ZjkiLCJpYXQiOjE0ODQzNzEzNjR9.9Z-9FxAfXfI8dI7CAy1dTsdRbhwB13r5TRnBZuMfChY';
-//var socket = io.connect('http://192.168.1.13:3000?token=' + token, {reconnect: true});
-var socket = io.connect('https://mysterious-harbor-27480.herokuapp.com?token=' + token, {reconnect: true});
+var socket = io.connect('http://192.168.1.13:3000?token=' + token, {reconnect: true});
+//var socket = io.connect('https://mysterious-harbor-27480.herokuapp.com?token=' + token, {reconnect: true});
 
 var ackTuoi = -2, ackDoAm = -2;
 
